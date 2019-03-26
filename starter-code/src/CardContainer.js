@@ -27,6 +27,14 @@ class CardContainer extends Component {
           });
         this.setState({contacts: copyOfContacts});
     }
+
+    sortByPopularity= () => {
+        const copyOfContacts = [...this.state.contacts];
+        copyOfContacts.sort(function(a, b){
+            return b.popularity - a.popularity;
+          });
+        this.setState({contacts: copyOfContacts});
+    }
     
     render() {
         const {contacts} = this.state;
