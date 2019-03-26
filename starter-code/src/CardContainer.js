@@ -15,13 +15,27 @@ class CardContainer extends Component {
         const newContact = rest[random];
         this.setState({contacts: [...contacts, newContact] });
     }
+
+    sortByName = () => {
+        const copyOfContacts = [...this.state.contacts];
+        copyOfContacts.sort(function(a, b){
+            var x = a.name.toLowerCase();
+            var y = b.name.toLowerCase();
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+          });
+        this.setState({contacts: copyOfContacts});
+    }
     
     render() {
         const {contacts} = this.state;
         return (
             <Fragment>
                 <h1>IronContacts</h1>
-                <CoolButton OnClick={this.addRandomContact} isInfo isMedium>Add Random Contact</CoolButton>
+                <CoolButton OnClick={this.addRandomContact} isInfo isSmall>Add Random Contact</CoolButton>
+                <CoolButton OnClick={this.sortByName} isInfo isSmall>Sort by Name</CoolButton>
+                <CoolButton OnClick={this.sortByPopularity} isInfo isSmall>Sort by Popularity</CoolButton>
                 <table>
                     <tbody>
                         <tr>
