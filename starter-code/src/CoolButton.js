@@ -29,6 +29,7 @@ function CoolButton({
   isWarning,
   isWhite,
   href,
+  OnClick
 }) {
   let classes = '';
   classes += isActive ? ' is-active' : '';
@@ -59,7 +60,7 @@ function CoolButton({
   classes += isWhite ? ' is-white' : '';
   classes += ' button';
   return (
-    <a href={href} className={classes}>
+    <a href={href} onClick={OnClick} className={classes}>
       {children}
     </a>
   );
